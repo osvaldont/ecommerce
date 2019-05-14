@@ -15,5 +15,11 @@
         "psr-4": {
             "Hcode\\": "vendor\\hcodebr\\php-classes\\src"
         }
-    }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "disable-tls": true,
+        "secure-http": false
+    }  
+
 }
