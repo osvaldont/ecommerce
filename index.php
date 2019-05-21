@@ -239,7 +239,7 @@ $app->post('/admin/forgot/reset', function() {
 
 });
 
-
+/* Rota para a pagina principal de categorias - Lista de categorias*/
 $app->get('/admin/categories', function() {
 
 	User::verifyLogin();
@@ -255,6 +255,7 @@ $app->get('/admin/categories', function() {
 
 });
 
+/* Rota para a tela de cadastro de categorias - Tela Novo Categoria*/
 $app->get('/admin/categories/create', function() {
 
 	User::verifyLogin();
@@ -265,6 +266,7 @@ $app->get('/admin/categories/create', function() {
 
 });
 
+/* Rota para a funcionalidade de inclusão de categorias - save*/
 $app->post('/admin/categories/create', function() {
 
 	User::verifyLogin();
@@ -280,6 +282,7 @@ $app->post('/admin/categories/create', function() {
 
 });
 
+/* Rota para a funcionalidade de exclusão de categorias - delete*/
 $app->get('/admin/categories/:idcategory/delete', function($idcategory) {
 
 	User::verifyLogin();
@@ -295,6 +298,7 @@ $app->get('/admin/categories/:idcategory/delete', function($idcategory) {
 
 });
 
+/* Rota para a tela de alteração de categorias - Tela Alteração*/
 $app->get('/admin/categories/:idcategory', function($idcategory) {
 
 	User::verifyLogin();
@@ -311,6 +315,7 @@ $app->get('/admin/categories/:idcategory', function($idcategory) {
 
 });
 
+/* Rota para a funcionalidade de alteração de categorias - update*/
 $app->post('/admin/categories/:idcategory', function($idcategory) {
 
 	User::verifyLogin();
@@ -328,7 +333,8 @@ $app->post('/admin/categories/:idcategory', function($idcategory) {
 
 });
 
-$app->post('/categories/:idcategory', function($idcategory) {
+/* Rota para direcinar para uma categoria especifica*/
+$app->get('/categories/:idcategory', function($idcategory) {
 
 	$category = new Category();
 
@@ -338,7 +344,8 @@ $app->post('/categories/:idcategory', function($idcategory) {
 
     $page->setTpl("category", [
 
-    	"category"=>$category->getValues()
+    	"category"=>$category->getValues(),
+    	"products"=>[]
 	]);
 
 });
